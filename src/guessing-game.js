@@ -11,7 +11,7 @@ class GuessingGame {
         }
         this.min = min;
         this.max = max;
-        this.mid = Math.floor((this.min + this.max) / 2);
+        this.mid = Math.round((this.min / 2 + this.max / 2));
     }
 
     guess() {
@@ -28,8 +28,8 @@ class GuessingGame {
         if (this.min > this.max) {
             throw new Error("Диапазон уже сужен до одного значения.");
         }
-        this.max = this.mid - 1;
-        this.mid = Math.floor((this.min + this.max) / 2);
+        this.max = this.mid;
+        this.mid = Math.round((this.min / 2 + this.max / 2));
     }
 
     greater() {
@@ -39,14 +39,16 @@ class GuessingGame {
         if (this.min > this.max) {
             throw new Error("Диапазон уже сужен до одного значения.");
         }
-        this.min = this.mid + 1;
-        this.mid = Math.floor((this.min + this.max) / 2);
+        this.min = this.mid;
+        this.mid = Math.round((this.min / 2 + this.max / 2));
     }
 
     isOver() {
         return this.min === this.max;
     }
 }
+
+
 
 
 module.exports = GuessingGame;
